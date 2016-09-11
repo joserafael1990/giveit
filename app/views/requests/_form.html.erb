@@ -1,0 +1,13 @@
+	<%= form_for([@item, @item.requests.build]) do |request|  %>
+		<p>
+			<%= request.label 'Su nombre' %>
+			<%= request.text_field :requester %>
+		</p>
+		<p>
+			<%= request.label 'Solicitud' %>
+			<%= request.text_area :body %>
+		</p>
+		<p>
+			<%= request.submit "Solicitar" %>
+		</p>
+	<% end %>

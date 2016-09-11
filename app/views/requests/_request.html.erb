@@ -1,0 +1,12 @@
+<p>
+	<strong>Persona: </strong>
+	<%= request.requester %>
+</p>
+<p>
+	<strong>Solicitud: </strong>
+	<%= request.body %>
+
+	<p>
+		<%= link_to 'Borrar Solicitud', [request.item, request], method: :delete, data: { confirm: "¿Está seguro?"} %>
+	</p>
+</p>

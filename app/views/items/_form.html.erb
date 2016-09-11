@@ -1,0 +1,28 @@
+	<%= form_for @item do |item| %>
+		<% if @item.errors.any? %>
+			<div id="error_explanation">
+				<h2>
+					<%=  pluralize(@item.errors.count, "error") %> Imposible registrar el artículo:
+				</h2>
+				<ul>
+					<% @item.errors.full_messages.each do |msg| %>
+						<li>
+							<%= msg %>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+
+		<p>
+		<%= item.label :title, "Título"%> <br>
+		<%= item.text_field :title %>
+		</p>
+		<p>
+			<%= item.label :description, "Descripción"%>
+			<%= item.text_area :description %>
+		</p>
+		<p>
+			<%=item.submit "Registrar"%>
+		</p>
+	<% end %>
