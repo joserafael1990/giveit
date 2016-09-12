@@ -1,3 +1,33 @@
-<h1>Welcome</h1>
+<style>
+.jumbotron { 
+	background-color: #0AA9BC; /* Orange */
+	color: #FFFFFF;
+}
+</style>
+<body>
 
-<%= link_to 'Giveit', controller: 'items' %>
+	<div class="jumbotron text-center">
+		<h1>Giveit</h1> 
+		<p>Lo que ya no necesitas, de seguro le sirve a alguien</p><br> 	
+		<%= form_for :item, :url=> {:action => "index"},:html => { :class => 'form-inline' }  do |item| %>
+			<%= item.text_field :title, class: "form-control", placeholder: 'Buscar algo', size: 50 %>								
+			<%= item.submit 'Buscar', class: 'btn btn-danger' %>
+		<% end %>
+	</div>
+
+<!--
+<h1>Bienvenido</h1>
+<h2>Estos son los artículos listos para ser donados</h2>
+	<% items =  Item.where(available: true).all %>
+	<% items.each do |item| %>
+		<p>
+			<strong><%= link_to item.title, item %>: </strong> <%= item.description %>
+		</p>
+	<% end %>
+
+	<% if items.size == 0 %>
+		<em>Artículos no encontrados</em>
+	<% end %>
+
+<%= link_to 'Donar algo', new_item_path %>
+->

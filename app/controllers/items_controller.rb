@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
-
-	http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+	before_action :get_item, only: [:edit, :destroy, :show, :update]
 	def create
 		@item = Item.new(item_params)
 
@@ -19,6 +18,9 @@ class ItemsController < ApplicationController
 	end
 
 	def edit
+	end
+
+	def get_item
 		@item = Item.find(params[:id])
 	end
 
@@ -31,12 +33,9 @@ class ItemsController < ApplicationController
 	end
 
 	def show
-		@item = Item.find(params[:id])
 	end
 
 	def update
-		@item = Item.find(params[:id])
-
 		if @item.update(item_params)
 			redirect_to @item
 		else
