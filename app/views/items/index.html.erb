@@ -1,19 +1,12 @@
-<h1>Artículos para donar</h1>
-<%= link_to 'Crear artículo', new_item_path %>
-<table>
-	<tr>
-		<th>Título</th>
-		<th>Descripción</th>
-		<th colspan="2"></th>
-	</tr>
+<h1>Artículos que coinciden con la búsqueda <%= params[:search] %></h1>
 
-	<% @items.each do |item| %>
-	<tr>
-		<td> <%= item.title%> </td>
-		<td> <%= item.description%></td>
-		<td> <%= link_to 'Ver' , item_path(item)%></td>
-		<td> <%= link_to 'Editar' , edit_item_path(item)%></td>
-		<td> <%= link_to 'Borrar' , item_path(item), method: :delete, data: { confirm: '¿Estas seguro?' }  %></td>
-	</tr>
-</table>
-	<% end %>
+<% if @items.present? %>
+  <% @items.each do |item| %>
+  	<p>
+  	<%= link_to item.title, item_path(item) %>
+  	</p>
+  <% end %>
+<% else %>
+  <p>No se consiguieron artículos <%= params[:search] %>.</p>
+<% end %>
+

@@ -37,7 +37,7 @@
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Logo</a>
+				<a class="navbar-brand" href="http://localhost:3000/"> <%= image_tag("small logo.png") %> </a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right" >
@@ -48,7 +48,21 @@
 		</div>
 	</nav>
 </head>
+<style>
+.jumbotron { 
+	background-color: #0AA9BC; /* Orange */
+	color: #FFFFFF;
+}
+</style>
+<body>
 
-<%= yield %>
+	<div class="jumbotron text-center">
+		<h1>Giveit</h1> 
+		<p>Lo que ya no necesitas, de seguro le sirve a alguien</p><br> 	
+		<%= form_tag items_path, class: 'form-inline', :method => 'get' do  %>
+		<%= text_field_tag :search, params[:search], class: "form-control", placeholder: 'Buscar algo', size: 50 %>	
+		<%= submit_tag 'Buscar', class: 'btn btn-danger' %>
+		<% end %>
+	</div>
+	<%= yield %>
 </body>
-</html>
